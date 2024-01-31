@@ -1,115 +1,32 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>I meow you!</title>
-
-<style type="text/css">
-@font-face {
-	font-family: digit;
-	src: url('digital-7_mono.ttf') format("truetype");
-}
-</style>
-<link href="css/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Valentine's Proposal</title>
 </head>
 
 <body>
-
-<div id="mainDiv">
-	<div id="content">
-		<div id="code">
-			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments">*A SZERELEM KÓDJA</span><br />
-			<span class="space"/><span class="comments">*/</span><br />
-			Szia Édes !<br />
-			Emlékszel az első találkozásunkra?<br />
-			<span class="comments">// A macska kávézóban. 😊</span><br />
-			Amikor megláttalak egyből megakadt a szemem rajtad, olyan gyönyörű voltál!<br />
-			<span class="comments">// A szemeid, a mosolyod, a hajad... 😍</span><br />
-			Hazafele jöttem rá, hogy úristen... Én beleszerettem ebbe a lányba<br />
-			Ennek már több mint két hónapja és még velem vagy. Nagyon szerencsés ember vagyok! 🥰<br />
-			Sok mindent megéltünk idáig. Például nem gondoltam volna, hogy egyszer úgy fogok csókolózni egy lánnyal, hogy közben Sthol András énekel Umpa Lumpaként!... 😅<br />
-			Viszont ez idő alatt csináltam egy-két hülyeséget is amiket bánok és tudom, hogy nem estek jól! Bocsi érte! 🙁<br />
-			<span class="comments">// Viszont. Hogy miket is szeretek benned?</span> <br />
-			- Imádom, hogy minden reggel jó reggelt üzivel vársz! Feldobja a reggeleimet!<br />
-			- Imádom, hogy mindennap küldessz egy selfit! Ne tudd meg, mennyire feldobja a napomat!<br />
-			- Imádom, amikor ördögien nevetsz! Itt most a muhihihi-re gondolok😀<br />
-			- Imádom, hogy amikor nem beszélgetünk akkor képesek vagyunk csak simán egymást nézni és mosolyogni egymásra. Az a mosoly... ❤️<br />
-			- Imádom, hogy mindig küldessz Pötyiről egy képet! Pötyi is my favourite cat! ❤️<br />
-			- Imádom, azt, ahogyan megölelsz, ahogyan játszol a hajammal, ahogyan simogatod a mellkasom! 💞<br />
-			- Imádom, azt ahogyan csókolsz! Földöntúli élmény!<br />
-			- Imádom, hogy természetes szépség vagy és nincsen semmilyen mű dolog rajtad!<br />
-			- Imádom, hogy mindig eltudunk beszélgetni, minden hülyeségről ami éppen eszünkbe jut! <br />
-			- Imádom, hogy mindig horgolsz nekem valamit! Nagyon imádom ezeket a kis figurákat! <br />
-			- Imádom, azt, ahogyan rajzolsz! Brutál jó rajzokat készítessz! <br />
-			- Imádom, hogy mikor sétálunk az utcán és közben nézel rám! Mindig elmosolyodok olyankor, annyira cuki vagy! <br />
-			Annyi minden van amit lehetne még írni de nem akarom, hogy olvasással töltsd ezt a kevéske időt itt velem!<br />
-			<br>
-			<br>
-			Szóval:<br />
-			Édesem, csodálatos két hónap volt és remélem neked is! Nagyon szeretlek! ❤️❤️❤️<br />
-			<br>
-			<br>
-			Van még itt valami! Hívtalak már Rókámnak egy párszor, viszont nem kérdeztelek meg, hogy szeretnél is e az lenni?!<br />
-			Szóval lennél-e a rókám? Ha igen kattints a szívre és mellé adok még egy csókot is! 🥰 <br />
-			<br>
-			<span id="heartspan">
-			<a href="image1.jpg"><i class="fas fa-heart" id="icon"></i></a>
-			</span>
-		</div>
-		<div id="loveHeart">
-			<canvas id="garden"></canvas>
-			<div id="words">
-				<div id="messages">
-					
-					<div id="elapseClock"></div>
-				</div>
-				<div id="loveu">
-					I RAWR YOU!<br/>
-					<div class="signature"> ❤️</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script type="text/javascript">
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();
-together.setFullYear(2023, 10, 27);
-together.setHours(0);
-together.setMinutes(0);
-together.setSeconds(0);
-together.setMilliseconds(0);
-
-if (!document.createElement('canvas').getContext) {
-	var msg = document.createElement("div");
-	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-	document.body.appendChild(msg);
-	$("#code").css("display", "none")
-	$("#copyright").css("position", "absolute");
-	$("#copyright").css("bottom", "10px");
-	document.execCommand("stop");
-} else {
-	setTimeout(function () {
-		startHeartAnimation();
-	}, 5000);
-
-	timeElapse(together);
-	setInterval(function () {
-		timeElapse(together);
-	}, 500);
-
-	adjustCodePosition();
-	$("#code").typewriter();
-}
-</script>
+    <div class="container">
+        <div class="Mainprompt">
+            <img class="image" src="images/catflower.jpg"></img>
+            <h1 class="hh" id="name">Hey beautiful!</h1>
+            <p class="pp" id="question">Will you be my Valentine?</p>
+            <div class="buttons">
+                <button id="no-button" onclick="showMessage('No')">No</button>
+                <button onclick="showMessage('Yes')" id="yesButton">Yes</button>
+            </div>
+            <div class="hidden-message" id="no-message">
+                <p>Nice try, but you can't escape that easily!</p>
+            </div>
+            <div class="hidden-message" id="yes-message">
+                <p>YAY! See you on the 14th, babygirl.</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
