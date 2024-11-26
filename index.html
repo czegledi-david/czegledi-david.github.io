@@ -1,32 +1,76 @@
-<!DOCTYPE html>
-<html lang="hu">
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta charset="UTF-8">
+		<title>Egyévesek lettünk!</title>
+		<link rel="stylesheet" type="text/css" href="./css/format.css">
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Valentine's Proposal</title>
-</head>
+	<body style="margin:0px">
+		<canvas></canvas>
+		<div id="imgTxt">
+			<span id="Txt"></span> <br />
+			<span id="tmp"></span>
+			<img id="img" src="">
+		</div>
+		<div id="heartTxt">
+			<span id="clickMe">Kattints!</span>
+			<div id="heart">
+				<button id="button" onclick="play()"></button>
+			</div>
+		</div>
+		<div id="content">
+			<h2 id="together">Együtt vagyunk...</h2>
+			<div id="timer">
+				<b id="d"></b> Napja,  
+				<b id="h"></b> Órája, 
+				<b id="m"></b> Perce, 
+				 és <b id="s"></b> Másodperce
+			</div>
+		</div>
 
-<body>
-    <div class="container">
-        <div class="Mainprompt">
-            <img class="image" src="images/catflower.jpg"></img>
-            <h1 class="hh" id="name">Hey Aranyhaj!</h1>
-            <p class="pp" id="question">Leszel a valentinom?</p>
-            <div class="buttons">
-                <button id="no-button" onclick="showMessage('No')">No</button>
-                <button onclick="showMessage('Yes')" id="yesButton">Yes</button>
-            </div>
-            <div class="hidden-message" id="no-message">
-                <p>Szép próbálkozás, de nincs olyan, hogy nem!</p>
-            </div>
-            <div class="hidden-message" id="yes-message">
-                <p>YAY! Találkozunk február 11.-én!</p>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
+    	<div id = "typeDiv">
+        	<span id="txt1"></span> <br />
+        	<span id="txt2"></span>
+    	</div>		
 
+		<script >
+			var ok = 0;
+			var flag = 1;
+			var myImage = document.getElementById("img");
+			var myTxt = document.getElementById("Txt");
+			var imageArray = ["pic/img_1.jpg", "pic/img_2.jpg", "pic/img_3.jpg","pic/img_4.jpg", "pic/img_5.jpg", "pic/img_6.jpg", 
+			"pic/img_7.jpg", "pic/img_8.jpg", "pic/img_9.jpg", "pic/img_10.jpg", "pic/img_11.jpg", "pic/img_12.jpg", "pic/img_13.jpg",
+			"pic/img_14.jpg", "pic/img_15.jpg", "pic/img_16.jpeg", "pic/img_17.jpg", "pic/img_18.jpg", "pic/img_19.jpg", "pic/img_20.jpg", "pic/img_21.jpg", "pic/img_22.jpeg", "pic/img_23.jpg",
+			"pic/img_24.jpg", "pic/img_25.jpg", "pic/img_26.jpg", "pic/img_27.jpg", "pic/img_28.jpg", "pic/img_29.jpg", "pic/img_30.jpg", "pic/img_31.jpg", "pic/img_32.jpg", "pic/img_33.heic",
+			"pic/img_34.jpg", "pic/img_35.jpeg", "pic/img_36.jpg", "pic/img_37.jpg", "pic/img_38.jpg", "pic/img_39.jpg", "pic/img_40.jpg", "pic/img_41.jpg", "pic/img_42.jpg", "pic/img_43.jpg"];
+			var imageIndex = 0;
+			var txtArray = ["Kezdjük a visszatekintést!", "A kezdetekben Moszat képekkel bombáztalak! :)",
+				"De a Macska kávézóban kezdődött minden, amikor is sok-sok beszélgetés után végre találkoztunk!",
+				"Amikor is elhalmoztál gyönyörű rajzaiddal, horgolt csodáiddal!", "Amiket még1x nagyon köszönök és imádom őket!",
+				"AWWWWWWWW <3", "Elkészültek az első szelfik, megtörténtek az első mozizások.(Wonka ;) )", "Karácsonyi vásározások",
+				"Megtaláltuk a kedvenc kávézónkat, a Volt Egyszert!", "De az első csók a Black Sheep-nél volt! (Csak ezt a képet találtam xd)",
+				"De a Volt Egyszer maradt a mi kis helyünk!", "Az a sok-sok szép emlék ;)",
+				"Egy cuki kép rólad!", "Starbucksban is voltunk néha Latte Machiatto Pumpkin kávékért! xd",
+				"Mozis szelfi. Onnan is van egy két szép emlék! ;)", "Ez volt az első szelfink csak kimaradt!",
+				"Nagyerdőt is megnéztük egy párszor, azok a romantikus sétákat nagyon szerettem, mégha hideg is volt!",
+				"De a sok sok randi után végre eljött az idő, hogy végre egy estét is együtt tölthessünk a sok fagyoskodás után.",
+				"Végre egymás mellett ébredés!", "Megismerkedtél Moszattal!", "Közös reggel itt a szobámban!",
+				"Első közös családi program.",
+				"Ezt a képet szeretem! :)", "Gyönyörűm!",  "Elszenvedtünk egy ballagást!", "Egy Bence esküvőt! xd",
+				"Egyszer megleptelek!", "Pestre is felmentünk Dunát nézni!", "Túrázás Szilvásváradon!", "Aztán elmentünk az első közös nyaralásunkra.",
+				"Életem legjobb nyaralása volt!", "Imádtam minden percét! <3", "Ez a kép mindent elmond!", "Közös mozizás a réten. Hatalmas élmény volt!",
+				"Voltunk Mudfield koncerten is!", "Sírkert és pesti túra", "Családi kép! xd", "A sok virág amivel szenvedtél (még1x köszi!!)",
+				"Az esküvő. Nekem volt ott a legszebb párom! <3", "Bécsi túra", "Első állatkert!", "És hát a legfrisebb. A hazautat hagyjuk! xd",
+				"És ezt hagytam utoljára. Hisz itt kezdődött minden! <3"];
+			var len = imageArray.length;
+			var t = 0;
+		</script>
+		
+		<script type="text/javascript" src="./js/stars.js"></script>
+		<script type="text/javascript" src="./js/typeWriter.js"></script>
+		<script type="text/javascript" src="./js/date.js"></script>
+		<script type="text/javascript" src="./js/playImg.js"></script>
+	</body>
 </html>
